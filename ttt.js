@@ -111,8 +111,21 @@ const game = (function(){
       {
         let p = players[i]; 
         let scoreDiv = document.createElement('div');
-        console.log(`${p.name} on ${p.symbol} with ${p.getScore()} wins`);
-        scoreDiv.innerHTML = `${p.name} on ${p.symbol} with ${p.getScore()} wins`;
+        let playerInfo = document.createElement('div');
+        playerInfo.innerHTML = `${p.name} on ${p.symbol} with ${p.getScore()} wins`;
+        let playerInput = document.createElement('input');
+        playerInput.addEventListener('keypress', (e) =>{
+          if(e.key === 'Enter')
+          {
+            p.name = e.target.value;
+            e.target.value = "";
+            displayPlayers();
+            
+          }
+        });
+        scoreDiv.appendChild(playerInfo);
+        scoreDiv.appendChild(playerInput);
+
         
         playerDisplay.appendChild(scoreDiv);
       }
