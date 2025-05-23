@@ -127,10 +127,21 @@ const game = (function(){
     displayController.displayPlayers();
   };
 
+  const restart = () => {
+    for(let i = 0; i < 9; i++)
+    {
+      b.board[i] = null;
+    }
+    
+    display();
+    turn = 0;
+  }
+
   const startButton = () => {
     let button = document.querySelector("button");
     button.addEventListener("click", () => {
-      b.resetBoard();
+      console.log("click");
+      restart();
     });
   
   };
